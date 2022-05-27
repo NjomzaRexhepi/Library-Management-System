@@ -32,3 +32,23 @@ public void setShelfID(String shelfID) {
     public String getAuthor() {
         return author;
     }
+public String getCategory() {
+        return category;
+    }
+
+    public String getShelfID() {
+        return shelfID;
+    }
+
+    public int getAvailable() {
+        return available;
+    }
+
+    public Books(String title, String author, String category, String shelfID, int available){
+        this.title=title;
+        this.author=author;
+        this.available=available;
+        this.shelfID=shelfID;
+        this.category=category;
+    }
+}

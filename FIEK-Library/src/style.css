@@ -1,0 +1,185 @@
+.button, .regButton{
+  -fx-background-color: linear-gradient(white,white) ; /* Green */
+  -fx-text-fill: #00bbff;
+  -fx-border-color: #0076fc;
+  -fx-text-alignment: center;
+  -fx-display: inline-block;
+  -fx-font-size: 22px;
+  -fx-border-radius:12;
+  -fx-font-weight: bold;
+  -fx-font-family: "Times New Roman", Times, serif;
+
+ // -fx-button-webkit-transition-duration: 0.7s; /* Safari */
+    -fx-button-transition-duration: 0.7s;
+
+}
+.button:hover{
+-fx-background-color: linear-gradient(#00d9ff, #0351f8);
+-fx-text-fill: white;
+-fx-button-border:15;
+-fx-background-radius:12;
+-fx-border-radius:12;
+-fx-button-border: 0px;
+-fx-cursor:hand;
+}
+.regButton:hover{
+-fx-background-color: #00bbff;
+-fx-border-color: #008cff;
+-fx-text-fill: white;
+-fx-button-border:15;
+-fx-background-radius:12;
+-fx-border-radius:12;
+-fx-button-border: 0px;
+-fx-cursor:hand;
+}
+
+.buttonForget{
+ -fx-font-size:14;
+ -fx-border-width:0 0 0 0;
+ -fx-color: linear-gradient(#00c4ff, #3270cd);
+ -fx-background-color: white;
+}
+.buttonForget:hover{
+ -fx-font-width:bold;
+ -fx-text-fill: linear-gradient(#00c4ff, #3270cd);
+  -fx-background-color: white;
+}
+.buttonClose{
+ -fx-font-size:12;
+ -fx-border-radius:0;
+ -fx-background-radius:0;
+ -fx-color: linear-gradient(#00c4ff, #3270cd);
+ -fx-background-color: white;
+}
+.buttonClose:hover{
+ -fx-border-radius: 0;
+ -fx-background-radius: 0;
+ -fx-background-color: linear-gradient(white,red);
+ -fx-border-color:white;
+}
+
+.label{
+-fx-background-color: white;
+ -fx-font-family: "Ariel", sans-serif;
+ -fx-font-weight:bold;
+ -fx-font-size: 32;
+ -fx-text-fill:linear-gradient(#00c4ff, #3270cd);
+}
+.label-search{
+-fx-background-color: transparent;
+ -fx-font-family: "Ariel", sans-serif;
+ -fx-font-weight:bold;
+ -fx-font-size: 14;
+ -fx-text-fill:linear-gradient(#00c4ff, #3270cd);
+}
+.btn{
+  -fx-background-color: linear-gradient(#F8F8FF,#DCDCDC);
+  -fx-text-fill: linear-gradient(#00c4ff, #3270cd);
+  -fx-border-width:0 0 0 0;
+  -fx-border-radius:0;
+  -fx-button-width:100;
+}
+.btn-menu{
+  -fx-text-fill: linear-gradient(#00c4ff, #3270cd);
+  -fx-background-color: transparent;
+  -fx-font-size:20;
+}
+.btn:hover{
+  -fx-background-color: linear-gradient(#00c4ff, #3270cd);
+  -fx-text-fill: white;
+  -fx-border-width:0 0 0 0;
+  -fx-border-radius:0;
+  -fx-background-radius:0;
+}
+.combo-box{
+ -fx-background-color: linear-gradient(#00c4ff, #3270cd);
+  -fx-cursor:hand;
+  -fx-mark-color: white;
+}
+.combo-box > .combo-box-popup .list-view .list-cell{
+-fx-background-color: linear-gradient(#F8F8FF,#DCDCDC);
+}
+.combo-box > .combo-box-popup .list-view .list-cell:hover{
+-fx-background-color: linear-gradient(#00c4ff, #3270cd);
+}
+.combo-box > .list-cell {
+-fx-font-weight:bold;
+-fx-text-fill: white;
+-fx-font-size:14;
+}
+
+.combo-box-edited{
+}
+.combo-box-edited > .list-cell {
+   -fx-font-size:12;
+}
+
+.choice-box {
+  -fx-background-color: linear-gradient(#00c4ff, #3270cd);
+}
+.choice-box > .label {
+  -fx-font-size:14;
+  -fx-text-fill: white;
+  -fx-background-color: linear-gradient(#00c4ff, #3270cd);
+   }
+.choice-box .context-menu {
+ -fx-background-color: linear-gradient(#F8F8FF,white);
+ }
+.choice-box .menu-item:focused {
+ -fx-background-color: linear-gradient(#00c4ff, #3270cd);
+ }
+.choice-box .menu-item > .label {
+ -fx-background-color:transparent;
+  -fx-text-fill:linear-gradient(#00c4ff, #3270cd);
+  -fx-font-size:14;
+   }
+.choice-box .menu-item:focused > .label {
+  -fx-background-color: linear-gradient(#00c4ff, #3270cd);
+  -fx-text-fill: white;
+  }
+.text-field{
+ -fx-font-size:14;
+}
+
+
+.table-view{
+-fx-font-size:14;
+-fx-background-color:linear-gradient(#00c4ff, #3270cd);
+}
+.table-view:focused{
+    -fx-background-color: orange;
+}
+.table-view .column-header-background .label{
+    -fx-background-color: linear-gradient(white, #32b1cd);
+    -fx-text-fill: black;
+    -fx-font-size:18;
+}
+.table-row-cell:odd:selected {
+    -fx-background-color: linear-gradient(#8fc0ce, #5dc9e1);
+     -fx-text-fill: white;
+        -fx-font-size:14;
+}
+.table-row-cell:even:selected {
+    -fx-background-color: linear-gradient(#8fc0ce, #5dc9e1);
+    -fx-text-fill: white;
+            -fx-font-size:14;
+}
+.table-row-cell:odd {
+    -fx-background-color: white;
+}
+.table-row-cell:even {
+    -fx-background-color: #D3D3D3;
+}
+.changed-row{
+-fx-background-color: red;
+}
+.buttonMinimize{
+}
+.buttonMinimize:hover{
+ -fx-background-color: linear-gradient(white,SkyBlue);
+}
+.root{
+ -fx-background-color:white; /*linear-gradient(#F8F8FF,#DCDCDC);*/
+ -fx-border-width:2;
+ -fx-border-color: linear-gradient(#00fff7, #32b6cd)
+}

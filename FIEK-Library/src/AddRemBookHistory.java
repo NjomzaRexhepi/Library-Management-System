@@ -20,7 +20,7 @@ public class AddRemBookHistory {
         this.addedByName=addedByName;
         this.amount=amount;
     }
-    
+
     public String getTitle() {
         return title;
     }
@@ -84,6 +84,4 @@ public class AddRemBookHistory {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-
-  
 }

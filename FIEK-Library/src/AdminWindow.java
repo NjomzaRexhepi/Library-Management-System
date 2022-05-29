@@ -317,7 +317,8 @@ public class AdminWindow {
         member.setOnAction(event -> bor.setCenter(MemberWindow.getBookWindow()));
 
         videoCall.setOnMouseClicked((event) -> {
-//            try{
+//open web browser in webview           
+//          try{
 //               WebView w = new WebView();
 //               WebEngine e = w.getEngine();
 //               w.contextMenuEnabledProperty();

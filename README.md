@@ -51,5 +51,3 @@ In Employee Panel are also included chat and video call system.
 If you log in as a member , you have permission to: 
 * Check Issued Books
 
-
-

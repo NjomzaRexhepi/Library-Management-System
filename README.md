@@ -57,6 +57,7 @@ The chat system was created using:
 * Java
 
 It allows multiple users to send and recieve messages from each other.
+(note: to make communication between clients functional, you need to activate our tcp server.)
 
 ## Video Call System
 

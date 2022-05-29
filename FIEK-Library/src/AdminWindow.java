@@ -1,12 +1,25 @@
 import javafx.animation.Transition;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.print.URIException;
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -45,7 +58,7 @@ public class AdminWindow {
 
         Animation animate=Animation.getInstance();
 
-        Label lbl = new Label("SmartShelf");
+        Label lbl = new Label("FIEK - Library");
         lbl.setAlignment(Pos.CENTER_LEFT);
 
         Button close =new Button();
@@ -302,7 +315,33 @@ public class AdminWindow {
         employee.setOnAction(event -> bor.setCenter((EmployeeWindow.getBookWindow(abilityLevel))));
         chat1.setOnAction(event -> bor.setCenter(ChatWindow.getDisplay(firstName)));
         member.setOnAction(event -> bor.setCenter(MemberWindow.getBookWindow()));
-        videoCall.setOnAction(event -> bor.setCenter(VideoWindow.getDisplay(firstName)));
+
+        videoCall.setOnMouseClicked((event) -> {
+//            try{
+//               WebView w = new WebView();
+//               WebEngine e = w.getEngine();
+//               w.contextMenuEnabledProperty();
+//               e.load("http://192.168.0.17:3000/");
+//               Scene scene = new Scene(w, w.getPrefWidth(),w.getPrefHeight());
+//               Stage stage = new Stage();
+//               scene.getStylesheets().add("style.css");
+//               stage.setTitle("Video");
+//               stage.setScene(scene);
+//               stage.show();
+//            }catch (Exception e){
+//                System.out.println(e.getMessage());
+//            }
+            Desktop desktop = Desktop.getDesktop();
+            try{
+                desktop.browse(new URI("http://localhost:3000"));
+            }catch (URISyntaxException e){
+                e.printStackTrace();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+
+        });
+
         issuedBooks.setOnAction(event -> {
             cBox.setValue(name);
             bor.setCenter(IssuedBook.getIssueWindow(abilityLevel, ID));

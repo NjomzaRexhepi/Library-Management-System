@@ -407,3 +407,158 @@ setMembershipFee.setOnAction(event -> {
                 });
 
             });
+          receiveDelayFee.setOnAction(event -> {
+                Label label= new Label();
+                label.setText("After "+lateDays+" days, Late fee per Day: "+ lateFee);
+                label.setStyle("-fx-font-size: 14;" +
+                        " -fx-text-fill: green;");
+
+                TextField memberID=new TextField();
+                memberID.setPromptText("Enter Member ID");
+                memberID.setPrefSize(300,55);
+                memberID.setMaxSize(300,55);
+                TextField issueID=new TextField();
+                issueID.setPromptText("Enter Issue ID");
+                issueID.setPrefSize(300,55);
+                issueID.setMaxSize(300,55);
+
+                Button confirm = new Button("Check");
+                confirm.setPrefSize(120, 25);
+                confirm.setMaxSize(120, 25);
+                Button back = new Button("Back");
+                back.setPrefSize(120, 25);
+                back.setMaxSize(120, 25);
+                HBox hbox=new HBox();
+                hbox.setAlignment(Pos.CENTER);
+                hbox.setSpacing(20);
+                hbox.getChildren().addAll(back, confirm);
+
+                VBox membershipReceive= new VBox();
+                membershipReceive.setAlignment(Pos.CENTER);
+                membershipReceive.getChildren().addAll(label, memberID, issueID, hbox);
+                membershipReceive.setSpacing(30);
+                membershipReceive.setPrefWidth(330);
+                membershipReceive.setMinWidth(330);
+
+                fullBox.getChildren().clear();
+                fullBox.getChildren().add(membershipReceive);
+
+
+                back.setOnAction(event1 -> {
+                    if(confirm.getText().equals("Check")) {
+                        fullBox.getChildren().clear();
+                        if (emp.equals("Admin")) {
+                            fullBox.getChildren().addAll(leftBox, rightBox);
+                        } else {
+                            fullBox.getChildren().addAll(rightBox);
+                        }
+                        fullBox.setAlignment(Pos.CENTER);
+                        fullBox.setSpacing(100);
+                    }else{
+                        memberID.clear();
+                        issueID.clear();
+                        label.setText("After "+lateDays+" days, Late fee per Day: "+ lateFee);
+                        confirm.setText("Check");
+                        membershipReceive.getChildren().clear();
+                        membershipReceive.getChildren().addAll(label, memberID, issueID, hbox);
+                    }
+                });
+
+                confirm.setOnAction(event1 -> {
+                    ConnectionClass con = ConnectionClass.getInstance();
+
+                    if(confirm.getText().equals("Check")) {
+                        try {
+                            int over=0;
+                            over = (con.getDelayedAmount(issueID.getText()) - lateDays) * lateFee;
+                            label.setText("Amount: " + over);
+                            membershipReceive.getChildren().clear();
+                            membershipReceive.getChildren().addAll(label, hbox);
+                            confirm.setText("Confirm");
+                            setVal(over);
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+
+                        }
+                    }else{
+                        try {
+                            con.memberPayment(memberID.getText(), "Delay Fee","Issue ID: "+ issueID.getText(), id, "" + val);
+                            memberID.setStyle("-fx-background-color: #98FB98");
+                            issueID.setStyle("-fx-background-color: #98FB98");
+                            memberID.clear();
+                            issueID.clear();
+                            label.setText("After "+lateDays+" days, Late fee per Day: "+ lateFee);
+                            confirm.setText("Check");
+                            membershipReceive.getChildren().clear();
+                            membershipReceive.getChildren().addAll(label, memberID, issueID, hbox);
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+
+            });
+
+        receiveMiscFee.setOnAction(event1 -> {
+            TextField miscMemberID = new TextField();
+            miscMemberID.setPromptText("Enter Member ID");
+            miscMemberID.setPrefSize(300, 55);
+            miscMemberID.setMaxSize(300, 55);
+            TextField occasion = new TextField();
+            occasion.setPromptText("Enter Purpose");
+            occasion.setPrefSize(300, 55);
+            occasion.setMaxSize(300, 55);
+            TextField amount = new TextField();
+            amount.setPromptText("Enter Amount");
+            amount.setPrefSize(300, 55);
+            amount.setMaxSize(300, 55);
+
+
+            Button confirm = new Button("Confirm");
+            confirm.setPrefSize(120, 25);
+            confirm.setMaxSize(120, 25);
+            Button back = new Button("Back");
+            back.setPrefSize(120, 25);
+            back.setMaxSize(120, 25);
+            HBox hbox = new HBox();
+            hbox.setAlignment(Pos.CENTER);
+            hbox.setSpacing(20);
+            hbox.getChildren().addAll(back, confirm);
+
+            VBox employeePaymentBox = new VBox();
+            employeePaymentBox.setAlignment(Pos.CENTER);
+            employeePaymentBox.getChildren().addAll(miscMemberID, occasion, amount, hbox);
+            employeePaymentBox.setSpacing(30);
+            employeePaymentBox.setPrefWidth(330);
+            employeePaymentBox.setMinWidth(330);
+
+            fullBox.getChildren().clear();
+            fullBox.getChildren().add(employeePaymentBox);
+
+            back.setOnAction(event -> {
+                fullBox.getChildren().clear();
+                if (emp.equals("Admin")) {
+                    fullBox.getChildren().addAll(leftBox, rightBox);
+                } else {
+                    fullBox.getChildren().addAll(rightBox);
+                }
+                fullBox.setAlignment(Pos.CENTER);
+                fullBox.setSpacing(100);
+            });
+            confirm.setOnAction(event -> {
+                ConnectionClass con = ConnectionClass.getInstance();
+                try {
+                    con.memberPayment(miscMemberID.getText(), "Misc Fee", occasion.getText(), id,  amount.getText());
+                    miscMemberID.setStyle("-fx-background-color: #98FB98");
+                    occasion.setStyle("-fx-background-color: #98FB98");
+                    amount.setStyle("-fx-background-color: #98FB98");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+            });
+
+        });
+
+    }

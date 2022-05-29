@@ -54,3 +54,54 @@ public class Finance {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        
+         setSalary.setOnAction(event -> {
+                TextField field=new TextField();
+                field.setPromptText("Enter Employee ID");
+                field.setPrefSize(300,55);
+                field.setMaxSize(300,55);
+                TextField salary=new TextField();
+                salary.setPromptText("Enter Salary");
+                salary.setPrefSize(300,55);
+                salary.setMaxSize(300,55);
+
+                Button confirm = new Button("Confirm");
+                confirm.setPrefSize(120, 25);
+                confirm.setMaxSize(120, 25);
+                Button back = new Button("Back");
+                back.setPrefSize(120, 25);
+                back.setMaxSize(120, 25);
+                HBox hbox=new HBox();
+                hbox.setAlignment(Pos.CENTER);
+                hbox.setSpacing(20);
+                hbox.getChildren().addAll(back, confirm);
+
+                VBox setSalaryBox= new VBox();
+                setSalaryBox.setAlignment(Pos.CENTER);
+                setSalaryBox.getChildren().addAll(field, salary, hbox);
+                setSalaryBox.setSpacing(30);
+                setSalaryBox.setPrefWidth(330);
+                setSalaryBox.setMinWidth(330);
+
+                fullBox.getChildren().clear();
+                fullBox.getChildren().add(setSalaryBox);
+
+                back.setOnAction(event1 -> {
+                    fullBox.getChildren().clear();
+                    fullBox.getChildren().addAll(leftBox, rightBox);
+                    fullBox.setAlignment(Pos.CENTER);
+                    fullBox.setSpacing(100);
+                });
+                confirm.setOnAction(event1 -> {
+                    try {
+                        ConnectionClass con = ConnectionClass.getInstance();
+                        con.setSalary(field.getText(), salary.getText());
+                        field.setStyle("-fx-background-color: #98FB98");
+                        salary.setStyle("-fx-background-color: #98FB98");
+                    }catch(SQLException e){
+                        field.setStyle("-fx-background-color: #FFB6C1");
+                        salary.setStyle("-fx-background-color: #FFB6C1");
+                    }
+
+                });
+            });

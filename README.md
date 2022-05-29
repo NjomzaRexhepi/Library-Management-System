@@ -14,8 +14,11 @@ Library management system is software that is designed to manage functions of a 
 
 # Functionalitites
 
-This software allows you to log in as three kind of users:
+This software allows you to log in as three account types:
+
 * Admin
 * Library Staff
 * Member
+
+## Admin
 

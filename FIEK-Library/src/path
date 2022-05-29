@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="15.0.2" class="java.beans.XMLDecoder">
+ <object class="Message" id="Message0">
+  <void class="Message" method="getField">
+   <string>content</string>
+   <void method="set">
+    <object idref="Message0"/>
+    <string>Connected to </string>
+   </void>
+  </void>
+ </object>
+</java>

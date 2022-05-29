@@ -1,0 +1,34 @@
+import javafx.scene.control.Button;
+
+import java.util.concurrent.TimeUnit;
+
+public class Animation implements Runnable {
+    public static Animation obj=null;
+    private Button btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8;
+    private static boolean stretched1,stretched2, running;
+    private Animation(){
+
+    }
+    public static Animation getInstance(){
+        stretched1=false;
+        stretched2=false;
+        if(obj==null){
+            obj=new Animation();
+        }
+        return obj;
+    }
+    public void setButtonAnimation(Button btn1,Button btn2,Button btn3){
+        this.btn1=btn1;
+        this.btn2=btn2;
+        this.btn3=btn3;
+        running=false;
+    }
+
+    public void setButtonAnimation(Button btn1,Button btn2,Button btn3, Button btn4, Button btn5){
+        this.btn4=btn1;
+        this.btn5=btn2;
+        this.btn6=btn3;
+        this.btn7=btn4;
+        this.btn8=btn5;
+        running=true;
+    }

@@ -58,8 +58,7 @@ The chat system was created using:
 
 It allows multiple users to send and recieve messages from each other.
 
-
-(note: to make communication between clients functional, you need to activate our tcp server.)
+(note: to make communication between clients functional, you need to activate our TCP server.)
 
 ## Video Call System
 

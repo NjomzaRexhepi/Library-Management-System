@@ -22,8 +22,9 @@ public class Admin {
         GridPane grid = new GridPane();
         Button logIn = new Button("Log in");
         Button back = new Button("Back");
-        Button forgotPassword = new Button("Forgot password!");
-        TextField email = new TextField();
+       // Button forgotPassword = new Button("Forgot password!");
+        TextField adminlogin = new TextField("LogIn as Admin");
+		TextField email = new TextField();
         PasswordField password = new PasswordField();
         Label welcome= new Label();
         Button close =new Button();
@@ -46,10 +47,16 @@ public class Admin {
         back.setMaxSize(220, 35);
         back.setOnAction(event -> arg0.setScene(prevSc));
 
-        forgotPassword.setMinSize(150, 30);
-        forgotPassword.setPrefSize(150, 30);
-        forgotPassword.getStyleClass().add("buttonForget");
-        forgotPassword.setAlignment(Pos.CENTER_RIGHT);
+        //forgotPassword.setMinSize(150, 30);
+        //forgotPassword.setPrefSize(150, 30);
+        //forgotPassword.getStyleClass().add("buttonForget");
+        //forgotPassword.setAlignment(Pos.CENTER_RIGHT);
+		
+        adminlogin.setEditable(false);
+        adminlogin.setMinSize(150, 30);
+        adminlogin.setPrefSize(150, 30);
+        adminlogin.getStyleClass().add("Admin");
+        adminlogin.setAlignment(Pos.CENTER_RIGHT);
 
         email.setPrefSize(300, 55);
         email.setPromptText("Enter email address");
@@ -98,14 +105,14 @@ public class Admin {
         wrongBox.getChildren().add(wrong);
         wrongBox.setAlignment(Pos.CENTER);
 
-        grid.getChildren().addAll(hb, welcome, email, password, logIn, forgotPassword, empty, back, wrongBox);
+        grid.getChildren().addAll(hb, welcome, email, password, logIn,adminlogin, empty, back, wrongBox);
 
         GridPane.setConstraints(hb, 2, 0,2,1);
         GridPane.setConstraints(welcome, 0, 5,4,1);
         GridPane.setConstraints(email, 0, 6,3,1);
         GridPane.setConstraints(password, 0, 7,3,1);
         GridPane.setConstraints(logIn, 0, 8,1,1);
-        GridPane.setConstraints(forgotPassword, 2, 8,1,1);
+        GridPane.setConstraints(adminlogin, 2, 8,1,1);
         GridPane.setConstraints(empty, 1, 8,1,1);
         GridPane.setConstraints(back, 0, 9,1,1);
         GridPane.setConstraints(wrongBox, 0, 10,4,1);

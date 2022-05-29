@@ -56,7 +56,7 @@ The chat system was created using:
 * JavaFx
 * Java
 
-It allwos multiple users to send and recieve messages from each other.
+It allows multiple users to send and recieve messages from each other.
 
 ## Video Call System
 
@@ -72,7 +72,7 @@ It allows users:
 * Start & Stop their videos
 * Start & Stop their audios
 
-It's ideal for not more than 4 users.
+It allows multiple users to enter in the call.
 
 (note: to start the http server run "npm start")
 

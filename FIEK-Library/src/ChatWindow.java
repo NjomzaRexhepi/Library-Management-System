@@ -62,8 +62,14 @@ public class ChatWindow extends Thread{
         centerVBox.setSpacing(10);
     }
     private static void connect() throws IOException {
+        String path="src/path";
+        Message message=new Message("Connected to ");
+        XMLProcessor userProcessor = new XMLProcessor<Message>(Message.class);
+        String encodedMessage =userProcessor.serialize(message,path);
+        Message decodedMessage =(Message)userProcessor.deserialize(path);
+        
         server = new Socket(host, port);
-        appendToPane(msgBox, "Connected to " + server.getRemoteSocketAddress());
+        appendToPane(msgBox, decodedMessage.toString() + server.getRemoteSocketAddress());
 
         input = new BufferedReader(new InputStreamReader(server.getInputStream()));
         output = new PrintWriter(server.getOutputStream(), true);

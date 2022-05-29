@@ -64,5 +64,13 @@ public class Issue {
         issueBox.setSpacing(30);
         issueBox.setPrefWidth(330);
         issueBox.setMinWidth(330);
+        
+        clear.setOnAction(event -> {
+            title.clear();
+            author.clear();
+            shelfID.clear();
+            amount.clear();
+            memberID.clear();
+        });
     
 }

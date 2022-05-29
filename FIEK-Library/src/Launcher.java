@@ -26,7 +26,7 @@ public class Launcher extends Application {
     public void start(Stage arg0) {
         GridPane grid = new GridPane();
         Button admin = new Button("Admin");
-        Button libraryStuff = new Button("Library Stuff");
+        Button libraryStuff = new Button("Library Staff");
         Button member = new Button("Member");
         Label welcome= new Label("FIEK Library");
         Button close =new Button();

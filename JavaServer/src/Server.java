@@ -33,6 +33,12 @@ public class Server {
             }
         };
         System.out.println("Port 12345 is now open.");
+        
+        String path="src/path.xml";
+        Message message=new Message("Welcome ");
+        XMLProcessor messageProcessor = new XMLProcessor<Message>(Message.class);
+        String encodedMessage =messageProcessor.serialize(message,path);
+        Message decodedMessage =(Message)messageProcessor.deserialize(path);
 
         while (true) {
             // accepts a new client
@@ -51,7 +57,7 @@ public class Server {
             this.clients.add(newUser);
 
             // Welcome msg
-            newUser.getOutStream().println("Welcome " + newUser.toString());
+            newUser.getOutStream().println(decodedMessage.toString() + newUser.toString());
 
             // create a new thread for newUser incoming messages handling
             new Thread(new UserHandler(this, newUser)).start();

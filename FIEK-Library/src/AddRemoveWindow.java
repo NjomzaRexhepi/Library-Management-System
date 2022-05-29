@@ -114,3 +114,42 @@ public class AddRemoveWindow {
                     break;
             }
         });
+  refreshBtn.setOnAction(event -> refresh());
+
+        table=null;
+        conn=ConnectionClass.getInstance();
+        table = new TableView<AddRemBookHistory>();
+        table.getColumns().addAll(title, author,date,time, action, actedBy,copies);
+        table.setPrefSize(1150, 510);
+        table.setMaxSize(1150, 510);
+
+        centerTop = new HBox();
+        centerTop.getChildren().addAll(search, searchOption);
+        centerTop.setPrefSize(1150, 90);
+        centerTop.setMaxSize(1150, 90);
+        centerTop.setSpacing(10);
+        centerTop.setAlignment(Pos.CENTER_RIGHT);
+
+        centerVBox=new VBox();
+        centerVBox.setPadding(new Insets(20, 20, 20, 20));
+        centerVBox.maxHeight(100);
+        centerVBox.getChildren().addAll(centerTop, table);
+        centerVBox.setSpacing(10);
+
+
+    }
+    private static void refresh(){
+
+        searchBox.clear();
+        searchOption.setValue("Title");
+
+        Label label = new Label("to");
+        label.setMinSize(20, 35);
+        label.setPrefSize(20, 35);
+        label.setMaxSize(20, 35);
+        label.getStyleClass().add("label-search");
+        label.setAlignment(Pos.CENTER);
+
+        ComboBox<String> day=new ComboBox<String>();
+        ComboBox<String> month=new ComboBox<String>();
+        ComboBox<String> year=new ComboBox<String>();

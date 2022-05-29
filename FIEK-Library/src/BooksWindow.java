@@ -197,6 +197,30 @@ public class BooksWindow {
 
 
     }
+     private static void refresh(){
+       
+        searchOption.setValue("Search by Title");
+        cat.setValue("All");
+        searchBox.clear();
+        table.getItems().clear();
+        try {
+            table.getItems().addAll(conn.getAllBooks("All"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        rowSum.setText("[Row Selected: "+table.getItems().size()+"]");
+        int sum=0;
+        for(int c=0; c<table.getItems().size();c++){
+            sum+=table.getItems().get(c).getAvailable();
+        }
+        booksum.setText("[Total Book: "+sum+"]");
+    }
+
+    public static  VBox getBookWindow(){
+        refresh();
+        return centerVBox;
+    }
 
    
 

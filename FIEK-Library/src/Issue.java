@@ -72,5 +72,24 @@ public class Issue {
             amount.clear();
             memberID.clear();
         });
+        
+          confirm.setOnAction(event -> {
+
+            ConnectionClass mycon=ConnectionClass.getInstance();
+            try {
+                mycon.IssueBook(ID,title.getText(),author.getText(),shelfID.getText(),amount.getText(), memberID.getText());
+                title.clear();
+                author.clear();
+                shelfID.clear();
+                amount.clear();
+                memberID.clear();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        });
+
+        return issueBox;
+    }
     
 }

@@ -74,6 +74,6 @@ It allows users:
 
 It's ideal for not more than 4 users.
 
-(note: to start the http server run <mark>npm start</mark>)
+(note: to start the http server run ==npm start=== )
 
 

@@ -253,3 +253,157 @@ setMembershipFee.setOnAction(event -> {
                 }
             });
             });
+        
+         employeePayment.setOnAction(event -> {
+                TextField employeeID=new TextField();
+                employeeID.setPromptText("Enter Employee ID");
+                employeeID.setPrefSize(300,55);
+                employeeID.setMaxSize(300,55);
+                ComboBox<String> type= new ComboBox<String>();
+                type.setPrefSize(300,55);
+                type.setMaxSize(300,55);
+                type.getItems().addAll("Salary", "Bonus", "Medical Fee");
+                type.setValue("Salary");
+                TextField occasion=new TextField();
+                occasion.setPromptText("Month");
+                occasion.setPrefSize(300,55);
+                occasion.setMaxSize(300,55);
+                TextField amount=new TextField();
+                amount.setPromptText("Amount (Only For Medical Fee)");
+                amount.setPrefSize(300,55);
+                amount.setMaxSize(300,55);
+                amount.setEditable(false);
+                type.setOnAction(event1 -> {
+                    switch (type.getValue()){
+                        case "Salary":
+                            occasion.setPromptText("Month");
+                            amount.setEditable(false);
+                            amount.clear();
+                            break;
+                        case "Bonus":
+                            occasion.setPromptText("Festive");
+                            amount.setEditable(false);
+                            amount.clear();
+                            break;
+                        case "Medical Fee":
+                            occasion.setPromptText("Issue");
+                            amount.setEditable(true);
+                            break;
+                    }
+                });
+
+
+                Button confirm = new Button("Confirm");
+                confirm.setPrefSize(120, 25);
+                confirm.setMaxSize(120, 25);
+                Button back = new Button("Back");
+                back.setPrefSize(120, 25);
+                back.setMaxSize(120, 25);
+                HBox hbox=new HBox();
+                hbox.setAlignment(Pos.CENTER);
+                hbox.setSpacing(20);
+                hbox.getChildren().addAll(back, confirm);
+
+                VBox employeePaymentBox= new VBox();
+                employeePaymentBox.setAlignment(Pos.CENTER);
+                employeePaymentBox.getChildren().addAll(employeeID, type, occasion,amount, hbox);
+                employeePaymentBox.setSpacing(30);
+                employeePaymentBox.setPrefWidth(330);
+                employeePaymentBox.setMinWidth(330);
+
+                fullBox.getChildren().clear();
+                fullBox.getChildren().add(employeePaymentBox);
+
+                back.setOnAction(event1 -> {
+                    fullBox.getChildren().clear();
+                    if(emp.equals("Admin")) {
+                        fullBox.getChildren().addAll(leftBox, rightBox);
+                    }else{
+                        fullBox.getChildren().addAll(rightBox);
+                    }
+                    fullBox.setAlignment(Pos.CENTER);
+                    fullBox.setSpacing(100);
+                });
+                confirm.setOnAction(event1 -> {
+                ConnectionClass con=ConnectionClass.getInstance();
+                    try {
+                        con.employeePayment(employeeID.getText(),type.getValue(), occasion.getText(), id, amount.getText());
+                        employeeID.setStyle("-fx-background-color: #98FB98");
+                        occasion.setStyle("-fx-background-color: #98FB98");
+                        if(type.getValue().equals("Medical Fee")){
+                            amount.setStyle("-fx-background-color: #98FB98");
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        employeeID.setStyle("-fx-background-color: #FFB6C1");
+                        occasion.setStyle("-fx-background-color: #FFB6C1");
+                        if(type.getValue().equals("Medical Fee")){
+                            amount.setStyle("-fx-background-color: #FFB6C1");
+
+                        }
+                    }
+                });
+
+            });
+
+            receiveMembershipFee.setOnAction(event -> {
+                Label label= new Label();
+                label.setText("Membership Fee: "+ membershipFee);
+                label.setStyle("-fx-font-size: 14;" +
+                        " -fx-text-fill: green;");
+
+                TextField memberID=new TextField();
+                memberID.setPromptText("Enter Member ID");
+                memberID.setPrefSize(300,55);
+                memberID.setMaxSize(300,55);
+                TextField month=new TextField();
+                month.setPromptText("Enter Month");
+                month.setPrefSize(300,55);
+                month.setMaxSize(300,55);
+
+                Button confirm = new Button("Confirm");
+                confirm.setPrefSize(120, 25);
+                confirm.setMaxSize(120, 25);
+                Button back = new Button("Back");
+                back.setPrefSize(120, 25);
+                back.setMaxSize(120, 25);
+                HBox hbox=new HBox();
+                hbox.setAlignment(Pos.CENTER);
+                hbox.setSpacing(20);
+                hbox.getChildren().addAll(back, confirm);
+
+                VBox membershipReceive= new VBox();
+                membershipReceive.setAlignment(Pos.CENTER);
+                membershipReceive.getChildren().addAll(label, memberID, month, hbox);
+                membershipReceive.setSpacing(30);
+                membershipReceive.setPrefWidth(330);
+                membershipReceive.setMinWidth(330);
+
+                fullBox.getChildren().clear();
+                fullBox.getChildren().add(membershipReceive);
+
+                back.setOnAction(event1 -> {
+                    fullBox.getChildren().clear();
+                    if(emp.equals("Admin")) {
+                        fullBox.getChildren().addAll(leftBox, rightBox);
+                    }else{
+                        fullBox.getChildren().addAll(rightBox);
+                    }
+                    fullBox.setAlignment(Pos.CENTER);
+                    fullBox.setSpacing(100);
+                });
+
+                confirm.setOnAction(event1 -> {
+                    ConnectionClass con=ConnectionClass.getInstance();
+                    try {
+                        con.memberPayment(memberID.getText(), "Membership Fee", month.getText(), id, ""+membershipFee);
+                        memberID.setStyle("-fx-background-color: #98FB98");
+                        month.setStyle("-fx-background-color: #98FB98");
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        memberID.setStyle("-fx-background-color: #FFB6C1");
+                        month.setStyle("-fx-background-color: #FFB6C1");
+                    }
+                });
+
+            });

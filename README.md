@@ -80,7 +80,7 @@ It allows multiple users to enter in the call.
 
 ## Project Requirements
 
-Develop a distributed work management system in the FIEK library. The system must have implemented and incorporated a Chat using (TCP or UDP sockets) Client / Server for communication between system users (communication must be enabled with text, voice and video). Serialization and deserialization of objects that you will use in the project implement them through technologies: XML, JSON, Binary in Java and NodeJS / Python.
+Develop a distributed system for work management in the library of the Faculty of Electrical and Computer Engineering. The system must have implemented and incorporated a Chat using (TCP or UDP sockets) Client / Server for communication between system users (communication must be enabled with text, voice and video). Serialization and deserialization of objects that you will use in the project implement them through technologies: XML, JSON, Binary in Java and NodeJS / Python.
 
 
 

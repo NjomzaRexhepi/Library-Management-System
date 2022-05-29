@@ -17,5 +17,10 @@ public class User {
     public User(String name) {
         this.nickname=name;
     }
+
+    private static int nbUser = 0;
+    private int userId;
+    private PrintStream streamOut;
+  
    
 }

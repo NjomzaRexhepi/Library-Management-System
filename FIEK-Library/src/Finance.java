@@ -173,3 +173,83 @@ setMembershipFee.setOnAction(event -> {
                 }
             });
             });
+        
+            setDelayFee.setOnAction(event -> {
+
+            ConnectionClass con=ConnectionClass.getInstance();
+            String []vals=new String[4];
+            try {
+                vals=con.getMisc("Delay Fee");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            Label current= new Label("Current Status:");
+            current.setStyle("-fx-font-size: 14;" +
+                    " -fx-text-fill: green;");
+            Label fee= new Label();
+            fee.setStyle("-fx-font-size: 14;" +
+                    " -fx-text-fill: green;");
+            fee.setText("Membership Fee: "+vals[0]);
+            Label time= new Label();
+            time.setStyle("-fx-font-size: 14;" +
+                    " -fx-text-fill: green;");
+            time.setText("Allowed Time: "+vals[1]);
+            Label date= new Label();
+            date.setStyle("-fx-font-size: 14;" +
+                    " -fx-text-fill: green;");
+            date.setText("Last updated on: "+vals[3]);
+            Label updateID= new Label();
+            updateID.setStyle("-fx-font-size: 14;" +
+                    " -fx-text-fill: green;");
+            updateID.setText("Last updated by: "+vals[2]);
+
+
+            TextField delayFee=new TextField();
+            delayFee.setPromptText("Enter Delay Fee per Day");
+            delayFee.setPrefSize(300,55);
+            delayFee.setMaxSize(300,55);
+            TextField allowedDays=new TextField();
+            allowedDays.setPromptText("Allowed Days for Borrowing");
+            allowedDays.setPrefSize(300,55);
+            allowedDays.setMaxSize(300,55);
+
+            Button confirm = new Button("Confirm");
+            confirm.setPrefSize(120, 25);
+            confirm.setMaxSize(120, 25);
+            Button back = new Button("Back");
+            back.setPrefSize(120, 25);
+            back.setMaxSize(120, 25);
+            HBox hbox=new HBox();
+            hbox.setAlignment(Pos.CENTER);
+            hbox.setSpacing(20);
+            hbox.getChildren().addAll(back, confirm);
+
+            VBox setDelayBox= new VBox();
+            setDelayBox.setAlignment(Pos.CENTER);
+            setDelayBox.getChildren().addAll(current, fee, time, date, updateID, delayFee, allowedDays, hbox);
+            setDelayBox.setSpacing(30);
+            setDelayBox.setPrefWidth(330);
+            setDelayBox.setMinWidth(330);
+
+            fullBox.getChildren().clear();
+            fullBox.getChildren().add(setDelayBox);
+
+            back.setOnAction(event1 -> {
+                fullBox.getChildren().clear();
+                fullBox.getChildren().addAll(leftBox, rightBox);
+                fullBox.setAlignment(Pos.CENTER);
+                fullBox.setSpacing(100);
+            });
+            confirm.setOnAction(event1 -> {
+                try {
+                    con.setMisc("Delay Fee", delayFee.getText(), allowedDays.getText(), id);
+                    delayFee.setStyle("-fx-background-color: #98FB98");
+                    allowedDays.setStyle("-fx-background-color: #98FB98");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    delayFee.setStyle("-fx-background-color: #FFB6C1");
+                    allowedDays.setStyle("-fx-background-color: #FFB6C1");
+                }
+            });
+            });

@@ -64,9 +64,9 @@ public class ChatWindow extends Thread{
     private static void connect() throws IOException {
         String path="src/path";
         Message message=new Message("Connected to ");
-        XMLProcessor userProcessor = new XMLProcessor<Message>(Message.class);
-        String encodedMessage =userProcessor.serialize(message,path);
-        Message decodedMessage =(Message)userProcessor.deserialize(path);
+        XMLProcessor messageProcessor = new XMLProcessor<Message>(Message.class);
+        String encodedMessage =messageProcessor.serialize(message,path);
+        Message decodedMessage =(Message) messageProcessor.deserialize(path);
         
         server = new Socket(host, port);
         appendToPane(msgBox, decodedMessage.toString() + server.getRemoteSocketAddress());

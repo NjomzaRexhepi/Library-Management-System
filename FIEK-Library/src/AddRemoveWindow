@@ -1,0 +1,116 @@
+
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import java.sql.*;
+import java.util.Calendar;
+import java.util.Date;
+
+public class AddRemoveWindow {
+
+    static private VBox centerVBox;
+    static Connection myCon;
+    static TableView<AddRemBookHistory> table;
+    static ConnectionClass conn;
+    static private TableColumn<AddRemBookHistory, String> title;
+    static private TableColumn<AddRemBookHistory, String> author;
+    static private TableColumn<AddRemBookHistory, String> actedBy;
+    static private TableColumn<AddRemBookHistory, Date> date;
+    static private TableColumn<AddRemBookHistory, String> time;
+    static private TableColumn<AddRemBookHistory, String> action;
+    static private TableColumn<AddRemBookHistory, Integer> actedByID;
+    static private TableColumn<AddRemBookHistory, String> actedByName;
+    static private TableColumn<AddRemBookHistory, Integer> copies;
+    static private TextField searchBox;
+    static private Button searchBtn;
+    static private Button refreshBtn;
+    static private HBox search;
+    static private ComboBox<String> searchOption;
+    static private HBox centerTop;
+
+    static{
+        title = new TableColumn<>("Title");
+        title.setPrefWidth(230);
+        title.setCellValueFactory(new PropertyValueFactory<>("title"));
+
+        author = new TableColumn<>("Author");
+        author.setPrefWidth(230);
+        author.setCellValueFactory(new PropertyValueFactory<>("author"));
+
+        date = new TableColumn<>("Date");
+        date.setPrefWidth(230);
+        date.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        time = new TableColumn<>("Time");
+        time.setPrefWidth(230);
+        time.setCellValueFactory(new PropertyValueFactory<>("time"));
+
+        action = new TableColumn<>("Action");
+        action.setPrefWidth(230);
+        action.setCellValueFactory(new PropertyValueFactory<>("act"));
+
+        actedBy = new TableColumn<>("Acted By");
+        actedBy.setPrefWidth(230);
+        actedByID = new TableColumn<>("ID");
+        actedByName = new TableColumn<>("Name");
+        actedByID.setPrefWidth(115);
+        actedByName.setPrefWidth(115);
+        actedByID.setCellValueFactory(new PropertyValueFactory<>("addedByID"));
+        actedByName.setCellValueFactory(new PropertyValueFactory<>("addedByName"));
+        actedBy.getColumns().add(actedByID);
+        actedBy.getColumns().add(actedByName);
+
+        copies = new TableColumn<>("Copies");
+        copies.setPrefWidth(230);
+        copies.setCellValueFactory(new PropertyValueFactory<>("amount"));
+
+        searchBox = new TextField();
+        searchBox.setPromptText("search by Book Title");
+        searchBox.setPrefSize(400, 35);
+        searchBox.setMinSize(400, 35);
+        searchBox.setMaxSize(400, 35);
+
+        searchBtn = new Button();
+        searchBtn.setMinSize(40, 35);
+        searchBtn.setPrefSize(40, 35);
+        searchBtn.setMaxSize(40, 35);
+        char[] searchSign= Character.toChars(128269);
+        searchBtn.setText(String.valueOf(searchSign));
+        searchBtn.getStyleClass().add("btn-menu");
+        searchBtn.setStyle(" -fx-font-size:16;");
+
+        refreshBtn = new Button();
+        refreshBtn.setMinSize(40, 35);
+        refreshBtn.setPrefSize(40, 35);
+        refreshBtn.setMaxSize(40, 35);
+        char[] refreshSign= Character.toChars(128472);
+        refreshBtn.setText(String.valueOf(refreshSign));
+        refreshBtn.getStyleClass().add("btn-menu");
+        refreshBtn.setStyle(" -fx-font-size:16;");
+
+        search = new HBox();
+        search.getChildren().addAll(searchBox, searchBtn, refreshBtn);
+        search.setAlignment(Pos.CENTER);
+
+        searchOption = new ComboBox<String>();
+        searchOption.getItems().addAll("Title", "Author","Acted by");
+        searchOption.setValue("Title");
+        searchOption.setMinSize(150, 35);
+        searchOption.setPrefSize(150, 35);
+        searchOption.setMaxSize(150, 35);
+        searchOption.setOnAction(event -> {
+            switch(searchOption.getValue()){
+                case "Title":
+                    searchBox.setPromptText("search by Book Title");
+                    break;
+                case "Author":
+                    searchBox.setPromptText("search by Book Author");
+                    break;
+                case "Acted by":
+                    searchBox.setPromptText("search by Book acted by ID");
+                    break;
+            }
+        });

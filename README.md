@@ -12,9 +12,14 @@ Library management system is software that is designed to manage functions of a 
   * Css
   * NodeJs
 
+# Functionalitites and Looks
 
-# Functionalitites
+* Choose account type login
 
+  * Admin
+  * Library Staff
+  * Member
+  
 ![1](https://user-images.githubusercontent.com/75095687/170867328-b0f69ce3-73ed-46dd-9a34-4b8d09d14bca.JPG)
 
 

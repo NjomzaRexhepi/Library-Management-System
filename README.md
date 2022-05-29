@@ -53,8 +53,8 @@ If you log in as a member , you have permission to:
 
 ## Chat System
 The chat system was created using:
-*
-*
+* JavaFx
+* Java
 
 It allwos multiple users to send and recieve messages from each other.
 

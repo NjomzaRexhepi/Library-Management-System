@@ -32,3 +32,81 @@ public class Animation implements Runnable {
         this.btn8=btn5;
         running=true;
     }
+    @Override
+    public void run() {
+
+        if (!running) {
+            if (!stretched1) {
+                stretched1 = true;
+                int i = 0;
+                while (i < 31) {
+                    btn1.setPrefSize(300, i);
+                    btn2.setPrefSize(300, i);
+                    btn3.setPrefSize(300, i);
+
+
+                    i++;
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(12);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } else {
+                stretched1 = false;
+                int i = 30;
+                while (i > -1) {
+                    btn1.setPrefSize(300, i);
+                    btn2.setPrefSize(300, i);
+                    btn3.setPrefSize(300, i);
+
+                    i--;
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(7);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        }else{
+            if (!stretched2) {
+                stretched2 = true;
+                int i = 0;
+                while (i < 31) {
+                    btn4.setPrefSize(300, i);
+                    btn5.setPrefSize(300, i);
+                    btn6.setPrefSize(300, i);
+                    btn7.setPrefSize(300, i);
+                    btn8.setPrefSize(300, i);
+
+
+                    i++;
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(12);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } else {
+                stretched2 = false;
+                int i = 30;
+                while (i > -1) {
+                    btn4.setPrefSize(300, i);
+                    btn5.setPrefSize(300, i);
+                    btn6.setPrefSize(300, i);
+                    btn7.setPrefSize(300, i);
+                    btn8.setPrefSize(300, i);
+
+                    i--;
+                    try {
+                        TimeUnit.MILLISECONDS.sleep(7);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        }
+    }
+}

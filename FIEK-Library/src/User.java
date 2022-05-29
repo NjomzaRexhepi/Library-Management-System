@@ -21,6 +21,15 @@ public class User {
     private static int nbUser = 0;
     private int userId;
     private PrintStream streamOut;
-  
+    private InputStream streamIn;
+    private String nickname;
+    private Socket client;
+    private String color;
+
+    public User(){}
+
+    public User(String name) {
+        this.nickname=name;
+    }
    
 }

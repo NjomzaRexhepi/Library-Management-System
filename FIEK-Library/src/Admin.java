@@ -23,7 +23,7 @@ public class Admin {
         Button logIn = new Button("Log in");
         Button back = new Button("Back");
        // Button forgotPassword = new Button("Forgot password!");
-        TextField adminlogin = new TextField("LogIn as Admin");
+        TextField adminlogin = new TextField("LogIn in eLibrary");
 		TextField email = new TextField();
         PasswordField password = new PasswordField();
         Label welcome= new Label();

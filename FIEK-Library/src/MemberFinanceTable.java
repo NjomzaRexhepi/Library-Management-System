@@ -52,6 +52,38 @@ public class MemberFinanceTable {
     public void setOccasion(String occasion) {
         this.occasion = occasion;
     }
+    
+      public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public int getEnteredBy() {
+        return enteredBy;
+    }
+
+    public void setEnteredBy(int enteredBy) {
+        this.enteredBy = enteredBy;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
   
 

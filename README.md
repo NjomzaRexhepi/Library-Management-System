@@ -51,3 +51,27 @@ In Employee Panel are also included chat and video call system.
 If you log in as a member , you have permission to: 
 * Check Issued Books
 
+## Chat System
+The chat system was created using:
+*
+*
+
+It allwos multiple users to send and recieve messages from each other.
+
+## Video Call System
+
+The Video Call System was created using:
+* Html & CSS
+* NodeJs
+* WebRTC
+* Socket.io
+
+It allows users:
+* Create Rooms
+* Join Rooms 
+* Start & Stop their videos
+* Start & Stop their audios
+
+It's ideal for not more than 4 users.
+
+

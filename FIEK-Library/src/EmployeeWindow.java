@@ -156,3 +156,22 @@ public class EmployeeWindow {
             table.getColumns().addAll(id, firstName, lastName, email, phoneNumber);
         }
     }
+     private static void refresh(){
+        cat.setValue("ID");
+        searchBox.clear();
+        table.getItems().clear();
+        try {
+            table.getItems().addAll(conn.getEmployees(searchBox.getText(), cat.getValue()));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        rowSum.setText("[Row Selected: "+table.getItems().size()+"]");
+    }
+
+    public static  VBox getBookWindow(String s) {
+        setColumns(s);
+        refresh();
+        return centerVBox;
+    }
+
+}

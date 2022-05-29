@@ -22,3 +22,14 @@ This software allows you to log in as three account types:
 
 ## Admin
 
+If you log in as admin, you have permission to: 
+* Issue & Receive Books
+* Add & Remove Books
+* Add & Remove Members
+* Add & Remove Employee (library staff)
+* Add & Remove Admin
+* Check Books, Employees, Members
+* Check History (issued books, finance)
+* Control Finance (set salary, set membership fee, set delay fee)
+
+

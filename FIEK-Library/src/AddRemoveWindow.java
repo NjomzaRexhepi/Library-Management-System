@@ -153,3 +153,84 @@ public class AddRemoveWindow {
         ComboBox<String> day=new ComboBox<String>();
         ComboBox<String> month=new ComboBox<String>();
         ComboBox<String> year=new ComboBox<String>();
+
+         day.getItems().addAll("01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","Any");
+        month.getItems().addAll("01","02","03","04","05","06","07","08","09","10","11","12","Any");
+        year.getItems().addAll("1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","Any");
+        day.setPrefSize(80,25);
+        day.setMaxSize(80,25);
+        month.setPrefSize(80,25);
+        month.setMaxSize(80,25);
+        year.setPrefSize(80,25);
+        year.setMaxSize(80,25);
+        day.getStyleClass().add("combo-box-edited");
+        month.getStyleClass().add("combo-box-edited");
+        year.getStyleClass().add("combo-box-edited");
+        day.setValue("01");
+        month.setValue("01");
+        year.setValue("1995");
+
+        ComboBox<String> day2=new ComboBox<String>();
+        ComboBox<String> month2=new ComboBox<String>();
+        ComboBox<String> year2=new ComboBox<String>();
+
+        day2.getItems().addAll("01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","Any");
+        month2.getItems().addAll("01","02","03","04","05","06","07","08","09","10","11","12","Any");
+        year2.getItems().addAll("1995","1996","1997","1998","1999","2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","Any");
+        day2.setPrefSize(80,25);
+        day2.setMaxSize(80,25);
+        month2.setPrefSize(80,25);
+        month2.setMaxSize(80,25);
+        year2.setPrefSize(80,25);
+        year2.setMaxSize(80,25);
+        day2.getStyleClass().add("combo-box-edited");
+        month2.getStyleClass().add("combo-box-edited");
+        year2.getStyleClass().add("combo-box-edited");
+
+
+        HBox dateBox=new HBox();
+        dateBox.setSpacing(2);
+        dateBox.setMinSize(480,35);
+        dateBox.setPrefSize(480,35);
+        dateBox.setMaxSize(480,35);
+        dateBox.setAlignment(Pos.CENTER_RIGHT);
+        dateBox.setStyle("-fx-border-color: linear-gradient(#7FFF00,#32CD32)");
+
+
+        Calendar cal = Calendar.getInstance();
+        day2.setValue(cal.get(Calendar.DAY_OF_MONTH)<10? ("0"+cal.get(Calendar.DAY_OF_MONTH)):""+cal.get(Calendar.DAY_OF_MONTH));
+        month2.setValue((cal.get(Calendar.MONTH)+1)<10? ("0"+(cal.get(Calendar.MONTH)+1)):""+(cal.get(Calendar.MONTH)+1));
+        year2.setValue(""+cal.get(Calendar.YEAR));
+
+        dateBox.getChildren().addAll(day,month,year,label,day2,month2,year2);
+        table.getItems().clear();
+        try {
+            table.getItems().addAll(conn.getAddRemBookHistory(searchBox.getText(),""+year.getValue()+"-"+month.getValue()+"-"+day.getValue(),
+                    ""+year2.getValue()+"-"+month2.getValue()+"-"+day2.getValue(),searchOption.getValue()));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        searchBtn.setOnAction(event -> {
+            try {
+
+                table.getItems().clear();
+                table.getItems().addAll(conn.getAddRemBookHistory(searchBox.getText(),""+year.getValue()+"-"+month.getValue()+"-"+day.getValue(),
+                        ""+year2.getValue()+"-"+month2.getValue()+"-"+day2.getValue(),searchOption.getValue()));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+
+        centerTop.getChildren().clear();
+        centerTop.getChildren().addAll(search, searchOption, dateBox);
+
+
+    }
+
+    public static  VBox getAddRemBookWindow() {
+        refresh();
+        return centerVBox;
+    }
+
+}

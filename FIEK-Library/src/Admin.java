@@ -31,7 +31,7 @@ public class Admin {
         char sign=10005;
         char minsign=9866;
         Button minimize=new Button(""+minsign);
-        Label empty= new Label();                                                      //used to create empty space
+        Label empty= new Label();                                                      
         HBox hb= new HBox();
         Label wrong=new Label();
         VBox wrongBox=new VBox();
@@ -46,11 +46,6 @@ public class Admin {
         back.setPrefSize(220, 35);
         back.setMaxSize(220, 35);
         back.setOnAction(event -> arg0.setScene(prevSc));
-
-        //forgotPassword.setMinSize(150, 30);
-        //forgotPassword.setPrefSize(150, 30);
-        //forgotPassword.getStyleClass().add("buttonForget");
-        //forgotPassword.setAlignment(Pos.CENTER_RIGHT);
 		
         adminlogin.setEditable(false);
         adminlogin.setMinSize(150, 30);

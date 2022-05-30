@@ -73,14 +73,14 @@ public class Admin {
         empty.setMinSize(50,35);
         switch (s){
             case "Admin":
-                welcome.setText("SmartShelf - Admin Portal");
+                welcome.setText("Admin Portal");
                 break;
             case "Employee":
-                welcome.setText("SmartShelf - Employee Portal");
+                welcome.setText("Employee Portal");
                 welcome.setStyle(" -fx-font-size: 30");
                 break;
             case "Member":
-                welcome.setText("SmartShelf - Member Portal");
+                welcome.setText("Member Portal");
                 break;
         }
 

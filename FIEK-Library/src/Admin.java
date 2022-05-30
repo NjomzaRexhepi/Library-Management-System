@@ -22,7 +22,6 @@ public class Admin {
         GridPane grid = new GridPane();
         Button logIn = new Button("Log in");
         Button back = new Button("Back");
-       // Button forgotPassword = new Button("Forgot password!");
         TextField adminlogin = new TextField("FIEK Library");
 		TextField email = new TextField();
         PasswordField password = new PasswordField();
